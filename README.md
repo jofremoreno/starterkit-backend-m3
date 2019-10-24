@@ -1,10 +1,152 @@
-# Starter kit API Backend
 
-```javascript
-$ npm install
-$ npm run start:dev
-```
+# Weathever
+​
+## Description
+​
+App to visually and chromatically help time and its temperature as well as a social section
+​
+## User Stories
+​
+**404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault.
+​
+**500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault.
+​
+**Homepage** - As a user I need to be registered and logged in to use the app.
+​
+**Sign up** - As a user, I want to register on the website to see all the events.
+​
+**Login** - As a user, I want to be able to log in to the website in order to use the app and view and edit my profile.
+​
+**Logout** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
 
-El backend se ejecuta en el puerto 3001 por defecto
+**User default home** As a user, I want to see the weather according to geolocation and the color of the tempoeratura.
+​
+**Search** - As a user, I can search for available cities to be able to choose which ones I want to see the temperature.
+​
+**Favorites** - As a user, I want to create a list of favorite cities to be able to see the information at all times.
+​
+**Social** - As a user, I want to see and create messages to see the real weather according to the area you ask.
+​
+**Profile** - As a user, I want to see, edit and / or delete my profile.
+​
+## Backlog
+​
+Future days prediction (example, 15 days vist).
+​
+Social: chat implementation according to geolocation
 
-**importante** cambiar el `.env-sample` a `.env` con vuestras variables de entorno.
+Weather: maybe some animation/transitions
+​
+## Routes
+​
+| Page name            | Method |
+| -------------------- | ---- | ----------------------- |
+| Home                 |   /  |
+| Log in               | post | /login |
+| Sign up              | post | /signup |
+| Social               | post | /social |
+| Social               | post | /social |
+| Fav                  | post | /favorites |
+| Fav                  | delete | /favorites |
+| Profile              | post | /profile |
+| Profile              | put | /profile |
+| Profile              | delete | /profile |
+​
+## Models
+​
+User model
+​
+   username: {
+      firstname: {
+        type: String,
+        match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
+        index: true,
+      },
+      lastname: {
+        type: String,
+        match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
+        index: true,
+      },
+    },
+
+		avatar: { 
+			type: String, 
+			default: '../images/avatardefault.jpg' 
+			},
+
+    email: {
+      type: String,
+      lowercase: true,
+      match: [/\S+@\S+\.\S+/, 'is invalid'],
+      index: true,
+    },
+
+		search {
+			citydata: {
+				cityname: {
+        type: String,
+        index: true,
+			},
+		},
+
+		social {
+
+		}
+
+		fav{
+			citydata: {
+				cityname: {
+        type: String,
+        required: true,
+        index: true,
+			},
+			countryname: {
+        type: String,
+        required: true,
+        index: true,
+      },
+			temp: {
+			type: number,
+			required: true,
+		},
+		},
+		}
+​
+City model
+
+		citydata: {
+      cityname: {
+        type: String,
+        required: true,
+        index: true,
+      },
+      countryname: {
+        type: String,
+        required: true,
+        index: true,
+      },
+			temp: {
+			type: number,
+			required: true,
+		};
+    },
+
+
+
+		
+​
+## Links
+​
+### Git
+​
+The url to your repository and to your deployed project
+​
+[Repository Frontend Link](https://github.com/jofremoreno/weathever-app-frontend)
+​
+[Repository Backend Link](https://github.com/jofremoreno/weathever-app-backend)
+​
+[Deploy Link](http://heroku.com/)
+​
+### Slides
+​
+[Slides Link](https://slides.com/noquarter/weatever-app)
