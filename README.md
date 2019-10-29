@@ -62,74 +62,58 @@ User model
         match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
         index: true,
       },
+
       lastname: {
         type: String,
         match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
         index: true,
       },
+   },
+
+      avatar: { 
+        type: String, 
+        default: '../images/avatardefault.jpg' 
     },
 
-		avatar: { 
-			type: String, 
-			default: '../images/avatardefault.jpg' 
-			},
-
-    email: {
-      type: String,
-      lowercase: true,
-      match: [/\S+@\S+\.\S+/, 'is invalid'],
-      index: true,
+      email: {
+        type: String,
+        lowercase: true,
+        match: [/\S+@\S+\.\S+/, 'is invalid'],
+        index: true,
     },
 
-		search {
-			citydata: {
-				cityname: {
-        type: String,
-        index: true,
-			},
-		},
+      search: {
+        citydata: {
+          cityname: {
+          type: String,
+          index: true,
+        }
+      }
 
-		social {
-
-		}
-
-		fav{
-			citydata: {
-				cityname: {
-        type: String,
-        required: true,
-        index: true,
-			},
-			countryname: {
-        type: String,
-        required: true,
-        index: true,
-      },
-			temp: {
-			type: number,
-			required: true,
-		},
-		},
-		}
-​
-City model
-
-		citydata: {
-      cityname: {
-        type: String,
-        required: true,
-        index: true,
-      },
-      countryname: {
-        type: String,
-        required: true,
-        index: true,
-      },
-			temp: {
-			type: number,
-			required: true,
-		};
+      fav{
+          type: String,
+          required: true,
+          index: true,
+       },
     },
+
+ Social model
+
+      social: {
+
+    },
+        countryname: {
+          type: String,
+          required: true,
+          index: true,
+        },
+
+        temp: {
+        type: number,
+        required: true,
+    }
+  }
+}
 
 
 
