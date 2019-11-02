@@ -21,13 +21,14 @@ router.post(
   '/signup',
   checkUsernameAndPasswordNotEmpty,
   async (req, res, next) => {
+    console.log('hola')
     const { username, password } = res.locals.auth;
     try {
       const user = await User.findOne({ username });
       if (user) {
         return res.status(422).json({ code: 'username-not-unique' });
       }
-
+console.log('hello')
       const salt = bcrypt.genSaltSync(bcryptSalt);
       const hashedPassword = bcrypt.hashSync(password, salt);
 
@@ -35,7 +36,6 @@ router.post(
       req.session.currentUser = newUser;
       return res.json(newUser);
     } catch (error) {
-      console.log('safdasdfasfdasdf', res.locals.auth);
       next(error);
     }
   }
@@ -59,7 +59,7 @@ router.post(
     } catch (error) {
       next(error);
     }
-  }
+  },
 );
 
 router.get('/logout', (req, res, next) => {

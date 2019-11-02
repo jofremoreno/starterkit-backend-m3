@@ -5,11 +5,10 @@ const { Schema } = mongoose;
 const userSchema = new Schema(
   {
     username: { type: String, required: true, unique: true },
-    lastname: { type: String, required: true },
+    lastname: { type: String },
     email: {
       type: String,
       lowercase: true,
-      required: true,
       unique: true,
       match: [/\S+@\S+\.\S+/, 'is invalid'],
     },
