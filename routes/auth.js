@@ -21,14 +21,12 @@ router.post(
   '/signup',
   checkUsernameAndPasswordNotEmpty,
   async (req, res, next) => {
-    console.log('hola')
     const { username, password } = res.locals.auth;
     try {
       const user = await User.findOne({ username });
       if (user) {
         return res.status(422).json({ code: 'username-not-unique' });
       }
-console.log('hello')
       const salt = bcrypt.genSaltSync(bcryptSalt);
       const hashedPassword = bcrypt.hashSync(password, salt);
 
