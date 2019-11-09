@@ -1,13 +1,13 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-const cookieParser = ('cookie-parser');
+// const cookieParser = ('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 // const cors = require('cors');
-const cors = require('cors')({origin: true, credentials: true});
+const cors = require('cors')({ origin: true, credentials: true });
 require('dotenv').config();
 
 mongoose.set('useCreateIndex', true);
@@ -16,7 +16,7 @@ mongoose
   .then(() => {
     console.log('connected to: ', process.env.MONGO_URL);
   })
-  .catch((error) => {
+  .catch(error => {
     console.error(error);
   });
 
@@ -24,10 +24,9 @@ const authRouter = require('./routes/auth');
 
 const app = express();
 
-app.set('trust proxy' ,true);
+app.set('trust proxy', true);
 app.use(cors);
 app.options('*', cors);
-
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -44,7 +43,7 @@ app.use(
     secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true,
-    name: 'weatheveapp'
+    name: 'weatheveapp',
     cookie: {
       maxAge: 24 * 60 * 60 * 1000,
       sameSite: 'none',
