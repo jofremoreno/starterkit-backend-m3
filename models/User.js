@@ -15,12 +15,7 @@ const userSchema = new Schema(
     avatar: { type: String, default: '/images/avatar/avatar.svg' },
     hashedPassword: { type: String, required: true },
     idzone: { type: String },
-    favsData: [
-      {
-        id: String,
-        name: String,
-      },
-    ],
+    favsData: [ '', ''],
   },
   {
     timestamps: {
